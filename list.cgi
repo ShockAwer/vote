@@ -29,6 +29,7 @@ $limax=100;				#１ページに表示するリスト標準数
 #ページ作成
 sub html {
 my ( @list );
+
 open( IN, "list.txt" );
 while ( <IN> ) {
     push ( @list, $_ );
