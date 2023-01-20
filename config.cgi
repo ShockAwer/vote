@@ -1,70 +1,70 @@
 sub global_config {
-$cgidir = 'http://www.zianplus.net/cgi-bin/vote+';	#CGI‚ð’u‚­êŠ
-$logdir = '';	#ƒƒOƒfƒBƒŒƒNƒgƒŠ–¼
-$htmdir = '';	#‚ˆ‚”‚‚Œƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠ–¼
-$coudir = '';	#ƒJƒEƒ“ƒ^ƒfƒBƒŒƒNƒgƒŠ–¼
-$vkey = '0001';		#ƒ`ƒFƒbƒNƒL[
-$postf ='on';		#‚o‚n‚r‚s‚©‚Ç‚¤‚©‚Ìƒ`ƒFƒbƒN
-$brmax=15;		#ƒRƒƒ“ƒgÅ‘ås”
-$chatmax=1000;		#ƒRƒƒ“ƒg•¶‚ÌÅ‘å’·‚³
-$namemax=35;		#ƒ^ƒCƒgƒ‹‚ÌÅ‘å’·‚³
-$sday = 0.1;		#‰Šú“ú”
-$masterkey = '';	#ƒ}ƒXƒ^[ƒpƒXƒ[ƒh
+$cgidir = '../~vote';	#CGIã‚’ç½®ãå ´æ‰€
+$logdir = '';	#ãƒ­ã‚°ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå
+$htmdir = '';	#ï½ˆï½”ï½ï½Œãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå
+$coudir = '';	#ã‚«ã‚¦ãƒ³ã‚¿ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå
+$vkey = '0001';		#ãƒã‚§ãƒƒã‚¯ã‚­ãƒ¼
+$postf ='on';		#ï¼°ï¼¯ï¼³ï¼´ã‹ã©ã†ã‹ã®ãƒã‚§ãƒƒã‚¯
+$brmax=15;		#ã‚³ãƒ¡ãƒ³ãƒˆæœ€å¤§è¡Œæ•°
+$chatmax=1000;		#ã‚³ãƒ¡ãƒ³ãƒˆæ–‡ã®æœ€å¤§é•·ã•
+$namemax=35;		#ã‚¿ã‚¤ãƒˆãƒ«ã®æœ€å¤§é•·ã•
+$sday = 0.1;		#åˆæœŸæ—¥æ•°
+$masterkey = '';	#ãƒžã‚¹ã‚¿ãƒ¼ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 
-#‰ŠúÝ’è{ by ƒjƒZƒ‚ƒNi‘Š‘ÎƒpƒX‚ÅBÅŒã‚ÉƒXƒ‰ƒbƒVƒ…‚Í•t‚¯‚È‚¢‚Å‚­‚¾‚³‚¢j
-$sendhtm = '../';	#ˆÚ“®—p‚Ìhtm‘—‚èæƒfƒBƒŒƒNƒgƒŠ
-$senddat = '../';	#ˆÚ“®—p‚Ìdat‘—‚èæƒfƒBƒŒƒNƒgƒŠ
-$forbid = '100';	#” ì¬ãŒÀ
+#åˆæœŸè¨­å®šï¼‹ by ãƒ‹ã‚»ãƒ¢ã‚¯ï¼ˆç›¸å¯¾ãƒ‘ã‚¹ã§ã€‚æœ€å¾Œã«ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¯ä»˜ã‘ãªã„ã§ãã ã•ã„ï¼‰
+$sendhtm = '../';	#ç§»å‹•ç”¨ã®htmé€ã‚Šå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+$senddat = '../';	#ç§»å‹•ç”¨ã®daté€ã‚Šå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+$forbid = '100';	#ç®±ä½œæˆä¸Šé™
 
-$cginame1 = 'list.cgi';		#ƒŠƒXƒgƒXƒNƒŠƒvƒg–¼
-$cginame2 = 'vote.cgi';		#ƒAƒ“ƒP[ƒgƒXƒNƒŠƒvƒg–¼
+$cginame1 = 'list.cgi';		#ãƒªã‚¹ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆå
+$cginame2 = 'vote.cgi';		#ã‚¢ãƒ³ã‚±ãƒ¼ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆå
 }
 
 sub vote_config() {
-$max = 1000;			#Å‘å“Š•[”
-$gif = '../bar.gif';		#ƒo[ƒtƒ@ƒCƒ‹
-$votemax=40;			#€–Ú–¼‚ÌÅ‘å’·‚³
-$commax=20;			#50Å‹ß‚Ì“Š•[‚Ì•\Ž¦”
-$comtime= 12;			#•\Ž¦‚·‚éƒRƒƒ“ƒg‚Ì‰ß‹ŽŽžŠÔ
-$tmpdir='';			#ƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ
+$max = 1000;			#æœ€å¤§æŠ•ç¥¨æ•°
+$gif = '../bar.gif';		#ãƒãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«
+$votemax=40;			#é …ç›®åã®æœ€å¤§é•·ã•
+$commax=20;			#50æœ€è¿‘ã®æŠ•ç¥¨ã®è¡¨ç¤ºæ•°
+$comtime= 12;			#è¡¨ç¤ºã™ã‚‹ã‚³ãƒ¡ãƒ³ãƒˆã®éŽåŽ»æ™‚é–“
+$tmpdir='';			#ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
 
-$daylimit = 1.5;	#‘‚«ž‚Ý‚Ì–³‚©‚Á‚½“Š•[” ‚ðíœ‚·‚é‚Ü‚Å‚Ì“ú”
-$aday = 0.05;		#‚P”­Œ¾‚ÅL‚Ñ‚éíœ‚Ü‚Å‚Ì“ú”
-$hday = 5.00;		#Å’á“ú”
-$lday = 864000;		#‰„–½•[‘ÎôB10*24*60*60
-$lbox = 900;		#¶‚«Žc‚ç‚¹‚é” ‚Ì”
+$daylimit = 1.5;	#æ›¸ãè¾¼ã¿ã®ç„¡ã‹ã£ãŸæŠ•ç¥¨ç®±ã‚’å‰Šé™¤ã™ã‚‹ã¾ã§ã®æ—¥æ•°
+$aday = 0.05;		#ï¼‘ç™ºè¨€ã§ä¼¸ã³ã‚‹å‰Šé™¤ã¾ã§ã®æ—¥æ•°
+$hday = 5.00;		#æœ€ä½Žæ—¥æ•°
+$lday = 864000;		#å»¶å‘½ç¥¨å¯¾ç­–ã€‚10*24*60*60
+$lbox = 900;		#ç”Ÿãæ®‹ã‚‰ã›ã‚‹ç®±ã®æ•°
 
-$hakosokudo=100;			#“¯ˆêƒzƒXƒg‚©‚ç‚Q‚SŽžŠÔ“à‚Éì‚ê‚é” ‚ÌÅ‘å”
-$wspeedfile = '';		#‘‚«ž‚Ý‘¬“xƒ`ƒFƒbƒN—pƒtƒ@ƒCƒ‹–¼
-$wspeedtime = 300;		#‘‚«ž‚Ý‘¬“x‹L˜^ŽžŠÔi•ªj
-$wspeedcou = 300;			#‘¬“xˆá”½‚Ì‘‚«ž‚Ý”
+$hakosokudo=100;			#åŒä¸€ãƒ›ã‚¹ãƒˆã‹ã‚‰ï¼’ï¼”æ™‚é–“å†…ã«ä½œã‚Œã‚‹ç®±ã®æœ€å¤§æ•°
+$wspeedfile = '';		#æ›¸ãè¾¼ã¿é€Ÿåº¦ãƒã‚§ãƒƒã‚¯ç”¨ãƒ•ã‚¡ã‚¤ãƒ«å
+$wspeedtime = 300;		#æ›¸ãè¾¼ã¿é€Ÿåº¦è¨˜éŒ²æ™‚é–“ï¼ˆåˆ†ï¼‰
+$wspeedcou = 300;			#é€Ÿåº¦é•åã®æ›¸ãè¾¼ã¿æ•°
 
 @titleNGwords = ();
-@voteNGwords = (); # Šù‘¶€–Ú‚Ö‚ÌŒp‘±“Š•[‚à‹K§
-@votenNGwords = ();# V‹K€–Ú‚Ì‚Ý‹K§
+@voteNGwords = (); # æ—¢å­˜é …ç›®ã¸ã®ç¶™ç¶šæŠ•ç¥¨ã‚‚è¦åˆ¶
+@votenNGwords = ();# æ–°è¦é …ç›®ã®ã¿è¦åˆ¶
 @chatNGwords = ();#
 
-$xhakosokudo=3;		#“¯ˆê˜R‚ê‹ø‚©‚ç‚Q‚SŽžŠÔ“à‚Éì‚ê‚é” ‚ÌÅ‘å”
-$xwspeedcou = 1;	#‘¬“xˆá”½‚Ì‘‚«ž‚Ý”(“½–¼‹ø—p)
+$xhakosokudo=3;		#åŒä¸€æ¼ã‚Œä¸²ã‹ã‚‰ï¼’ï¼”æ™‚é–“å†…ã«ä½œã‚Œã‚‹ç®±ã®æœ€å¤§æ•°
+$xwspeedcou = 1;	#é€Ÿåº¦é•åã®æ›¸ãè¾¼ã¿æ•°(åŒ¿åä¸²ç”¨)
 
-@banned_proxies = ();   #‹ÖŽ~‹øƒŠƒXƒg
-$ban_open_proxy = 0;    #ŒöŠJ‹ø‚©‚ç‚Ì” ì¬‚Ì‹ÖŽ~
+@banned_proxies = ();   #ç¦æ­¢ä¸²ãƒªã‚¹ãƒˆ
+$ban_open_proxy = 0;    #å…¬é–‹ä¸²ã‹ã‚‰ã®ç®±ä½œæˆã®ç¦æ­¢
 
-$port_check_timeout = 5; # ‹øƒ`ƒFƒbƒN‚Ìƒ^ƒCƒ€ƒAƒEƒg(ƒ|[ƒgˆê‚Â–ˆ‚Ì)’PˆÊ‚Í•b
+$port_check_timeout = 5; # ä¸²ãƒã‚§ãƒƒã‚¯ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ(ãƒãƒ¼ãƒˆä¸€ã¤æ¯Žã®)å˜ä½ã¯ç§’
 }
 
-# $proxycheck = 0:˜R‚ê‹ø 2:“½–¼‹ø 3:ŠCŠOƒAƒNƒZƒX 4:‘“à‘åŠw“™
+# $proxycheck = 0:æ¼ã‚Œä¸² 2:åŒ¿åä¸² 3:æµ·å¤–ã‚¢ã‚¯ã‚»ã‚¹ 4:å›½å†…å¤§å­¦ç­‰
 
 #############
-# “½–¼‹ø”»’è
+# åŒ¿åä¸²åˆ¤å®š
 sub is_annonymous_proxy() {
     return ( ($proxycheck == 2) || ($proxycheck == 3) );
 }
 
 #############
-# ‹ÖŽ~‹ø”»’è
+# ç¦æ­¢ä¸²åˆ¤å®š
 sub is_banned_proxy() {
-    # return 1 if($proxycheck == 3); #‹øƒ^ƒCƒv‚Å’e‚­
+    # return 1 if($proxycheck == 3); #ä¸²ã‚¿ã‚¤ãƒ—ã§å¼¾ã
     foreach (@banned_proxies) {
 	return 1 if(($host eq $_) || ($hosta eq $_) || ($xhost eq $_));
     }
