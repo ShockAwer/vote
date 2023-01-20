@@ -1,14 +1,15 @@
 #!/usr/bin/perl
 #
-#‚ä‚¢‚Ú[‚Æ2.1(yuivote2.cgi)
-#1997.10.10»ì
-#‚·‚­‚è‚Õ‚Æ@‚Î‚¢@‚ä‚¢‚¿‚á‚Á‚Æ@
-#” ì¬‘¬“xˆá”½‚Å‚·@@@@@@@@@Since  1996
-#¦‚±‚Ìcgi‚Ísnog‚Ì»ì‚µ‚½vote4‚ğ‰ü—Ç‚µ‚½•¨‚Å‚·
-#¦‹–‰Â‚ªæ‚ê‚éìÒ‚ª­‚È‚¢ˆ×A‚Æ‚è‚ ‚¦‚¸“ñŸ”z•z‚Æg—p‚Í•s‰Â‚É‚È‚Á‚Ä‚Ü‚·
+#ã‚†ã„ã¼ãƒ¼ã¨2.1(yuivote2.cgi)
+#1997.10.10è£½ä½œ
+#ã™ãã‚Šã·ã¨ã€€ã°ã„ã€€ã‚†ã„ã¡ã‚ƒã£ã¨ã€€
+#ç®±ä½œæˆé€Ÿåº¦é•åã§ã™ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€Since  1996
+#â€»ã“ã®cgiã¯snogã®è£½ä½œã—ãŸvote4ã‚’æ”¹è‰¯ã—ãŸç‰©ã§ã™
+#â€»è¨±å¯ãŒå–ã‚Œã‚‹ä½œè€…ãŒå°‘ãªã„ç‚ºã€ã¨ã‚Šã‚ãˆãšäºŒæ¬¡é…å¸ƒã¨ä½¿ç”¨ã¯ä¸å¯ã«ãªã£ã¦ã¾ã™
 
 require './jcodeLE.pl';
 require './prei.cgi';
+
 
 $| = 1;	
 &winit;
@@ -19,27 +20,27 @@ $| = 1;
 if($detail){
 	if(($delete eq 'on') && ($postf eq 'on')){
 		&deletevote;
-		&resulthtml;	#WŒv‰æ–Êì¬
+		&resulthtml;	#é›†è¨ˆç”»é¢ä½œæˆ
 		print "Location: $cgidir/$cginame2?detail=$detail&room=$room\n\n";
 	}else{
 		&readlog;
-		&detailhtml;	#ƒRƒƒ“ƒgW‰æ–Ê‚Ö
+		&detailhtml;	#ã‚³ãƒ¡ãƒ³ãƒˆé›†ç”»é¢ã¸
 	}
 	exit;
 }
 if($allres eq 'on'){
 	if(($delete eq 'on') && ($postf eq 'on')){
 		&deletevote;
-		&resulthtml;	#WŒv‰æ–Êì¬
+		&resulthtml;	#é›†è¨ˆç”»é¢ä½œæˆ
 		print "Location: $cgidir/$cginame2?allres=on&room=$room\n\n";
 	}else{
 		&readlog;
-		&allreshtml;	#ƒRƒƒ“ƒgW‰æ–Ê‚Ö
+		&allreshtml;	#ã‚³ãƒ¡ãƒ³ãƒˆé›†ç”»é¢ã¸
 	}
 	exit;
 }
 if($postf ne 'on'){
-	&err("•s³‚È“Še‚Å‚·");
+	&err("ä¸æ­£ãªæŠ•ç¨¿ã§ã™");
 }
 if( $title ne '' ){
 	if( $title eq $masterkey ){
@@ -48,48 +49,48 @@ if( $title ne '' ){
 	}else{
 		&wspeed;
 		&make;
-		&resulthtml;	#WŒv‰æ–Êì¬
+		&resulthtml;	#é›†è¨ˆç”»é¢ä½œæˆ
 		print "Location: $cgidir/$htmdir/$room.html\n\n";
 	}
 	exit;
 }elsif($vote ne ''){
 	&wspeed;
 	&writelog;
-	&resulthtml;	#WŒv‰æ–Êì¬
+	&resulthtml;	#é›†è¨ˆç”»é¢ä½œæˆ
 	print "Location: $cgidir/$htmdir/$room.html\n\n";
 	exit;
 }
-&err("•s³‚È“Še‚Å‚·");
+&err("ä¸æ­£ãªæŠ•ç¨¿ã§ã™");
 exit;
 ##############################################################################
-#‰Šúİ’è‚È‚Ç
+#åˆæœŸè¨­å®šãªã©
 sub init{
     &vote_config();
 }#init END
 ##############################################################################
-#“ü—Í•ÏŠ·
+#å…¥åŠ›å¤‰æ›
 sub decode{
 
 $title = $FORM{'title'};
 if( $title ne '' ){
-	&err("ƒ^ƒCƒgƒ‹‚ª’·‚·‚¬‚Ü‚·B") if(length($title) > ($namemax*2));
+	&err("ã‚¿ã‚¤ãƒˆãƒ«ãŒé•·ã™ãã¾ã™ã€‚") if(length($title) > ($namemax*2));
 	$chktitle = $title;
-	$chktitle =~ s/@//g;$chktitle =~ s/ //g;
+	$chktitle =~ s/ã€€//g;$chktitle =~ s/ //g;
 	$title = '' if( $chktitle eq '' );
 }
 $vote=$FORM{'vote'};
 $voten=$FORM{'voten'};
-&err("“Š•[‚Ìd•û‚ğŠÔˆá‚¦‚Ä‚¢‚Ü‚·B") if( $voten ne '' && $vote ne '' );
+&err("æŠ•ç¥¨ã®ä»•æ–¹ã‚’é–“é•ãˆã¦ã„ã¾ã™ã€‚") if( $voten ne '' && $vote ne '' );
 $vote=$voten if( $vote eq '');
-&err("€–Ú–¼‚ª’·‚·‚¬‚Ü‚·B") if(length($vote) > ($votemax*2) );
+&err("é …ç›®åãŒé•·ã™ãã¾ã™ã€‚") if(length($vote) > ($votemax*2) );
 $chkvote = $vote;
-$chkvote =~ s/@//g;$chkvote =~ s/ //g;
+$chkvote =~ s/ã€€//g;$chkvote =~ s/ //g;
 $vote = '' if( $chkvote eq '' );
 $chat=$FORM{'chat'};
-if(length($chat) > ($chatmax*2)){&err("ƒRƒƒ“ƒg‚ª’·‚·‚¬‚Ü‚·B");}
-$_ = $chat;$brnum = s/ //ig;$brnum = s/@//ig;$brnum = s/<br>//ig;
-if( ($_ eq '') && ( ($vote ne '') || ($title ne '') ) ){&err("ƒRƒƒ“ƒg‚ª‘‚©‚ê‚Ä‚¢‚Ü‚¹‚ñ");}
-if($brnum >= $brmax){&err("ƒRƒƒ“ƒg‚Ìs”‚ª‘½‚·‚¬‚Ü‚·");}
+if(length($chat) > ($chatmax*2)){&err("ã‚³ãƒ¡ãƒ³ãƒˆãŒé•·ã™ãã¾ã™ã€‚");}
+$_ = $chat;$brnum = s/ //ig;$brnum = s/ã€€//ig;$brnum = s/<br>//ig;
+if( ($_ eq '') && ( ($vote ne '') || ($title ne '') ) ){&err("ã‚³ãƒ¡ãƒ³ãƒˆãŒæ›¸ã‹ã‚Œã¦ã„ã¾ã›ã‚“");}
+if($brnum >= $brmax){&err("ã‚³ãƒ¡ãƒ³ãƒˆã®è¡Œæ•°ãŒå¤šã™ãã¾ã™");}
 $detail=$FORM{'detail'};
 $room = $FORM{'room'};$room =~s/\D//g;$room = '000' if($room eq '');
 $mrev = $FORM{'mr'};$mrev = 'on' if($mrev eq '');$mrev = 'off' if($mrev ne 'on');
@@ -97,14 +98,14 @@ $allres=$FORM{'allres'};
 $root = $FORM{'root'};
 $delete = $FORM{'delete'};
 
-&ngCheck("I", $title, @titleNGwords);
-&ngCheck("I", $vote, @voteNGwords);
-&ngCheck("I", $voten, @votenNGwords);
-&ngCheck("I", $chat, @chatNGwords);
+&ngCheck("ï¼", $title, @titleNGwords);
+&ngCheck("ï¼", $vote, @voteNGwords);
+&ngCheck("ï¼", $voten, @votenNGwords);
+&ngCheck("ï¼", $chat, @chatNGwords);
 sub ngCheck() {
     my($msg, $target) = @_;
     $target =~ s/ //g;
-    $target =~ s/@//g;
+    $target =~ s/ã€€//g;
     shift(@_);
     shift(@_);
     foreach(@_){
@@ -114,58 +115,58 @@ sub ngCheck() {
 
 }#decode END
 ##############################################################################
-#”z—ñ@lines‚ÉƒƒO‚ğ“Ç‚İ‚Ş
+#é…åˆ—@linesã«ãƒ­ã‚°ã‚’èª­ã¿è¾¼ã‚€
 sub readlog{
 my($m_set);
 
-open(DB,"./$logdir/$room.dat") || &err("ƒƒOƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñB");
+open(DB,"./$logdir/$room.dat") || &err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	@lines = <DB>;
 close(DB);
 $m_set=shift(@lines);
 ($title,$vchkkey,$ddata,$opwhost,$otimes,$ochat,$odate,$oxhost) = split(/:#/,$m_set);
-if( $vkey ne $vchkkey ){ &err("ƒƒOƒtƒ@ƒCƒ‹‚ª‰ó‚ê‚Ä‚¢‚Ü‚·B"); }
+if( $vkey ne $vchkkey ){ &err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒå£Šã‚Œã¦ã„ã¾ã™ã€‚"); }
 }#readlog END
 ##############################################################################
-#ƒ`ƒFƒbƒN‚µ‚Â‚Â‘‚«‚Ş
+#ãƒã‚§ãƒƒã‚¯ã—ã¤ã¤æ›¸ãè¾¼ã‚€
 sub writelog{	
 my($m_set,$m_chktime,$m_line,$m_kpwhost,$m_dmy,$m_ktimes,$m_krev,$m_kvote,$m_chkday,$m_kchat,$m_chkchat,$m_hatu,$m_room);
 
-open(DB,"+<./$logdir/$room.dat") || &err("ƒƒOƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñB");
+open(DB,"+<./$logdir/$room.dat") || &err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	eval 'flock(DB,2);';
 	@lines = <DB>;
 	$m_set=shift(@lines);
 	($title,$vchkkey,$ddata,$opwhost,$otimes,$ochat,$odate,$oxhost) = split(/:#/,$m_set);
 	if( $vkey ne $vchkkey ){
 		close(DB);
-		&err("ƒƒOƒtƒ@ƒCƒ‹‚ª‰ó‚ê‚Ä‚¢‚Ü‚·B");
+		&err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒå£Šã‚Œã¦ã„ã¾ã™ã€‚");
 	}
 
 	$m_hatu = @lines;
 	if($m_hatu >= $max){
 		close(DB);
-		&err("“Š•[” ‚ª‚¢‚Á‚Ï‚¢‚É‚È‚è‚Ü‚µ‚½B");
+		&err("æŠ•ç¥¨ç®±ãŒã„ã£ã±ã„ã«ãªã‚Šã¾ã—ãŸã€‚");
 	}
 	$m_chktime = $times - 30*60;
 	if( 'on' ne $mrev ){
-		$m_chkchat = $chat;$m_chkchat =~ s/@//g;$m_chkchat =~ s/ //g;$m_chkchat =~ s/<br>//ig;
+		$m_chkchat = $chat;$m_chkchat =~ s/ã€€//g;$m_chkchat =~ s/ //g;$m_chkchat =~ s/<br>//ig;
 	}
 	@lines = reverse (@lines);
-	foreach $m_line (@lines) {	#ˆêl‘gD•[‚ğ—}§
+	foreach $m_line (@lines) {	#ä¸€äººçµ„ç¹”ç¥¨ã‚’æŠ‘åˆ¶
 		($m_kpwhost, $m_ktimes, $m_krev, $m_kvote,$m_kchat) = split(/:#/, $m_line);
 		if( $m_ktimes < $m_chktime ){ last; }
 		if( $m_kpwhost eq $pwhost ){
-			$m_kvote =~ s/@//g;$m_kvote =~ s/ //g;
+			$m_kvote =~ s/ã€€//g;$m_kvote =~ s/ //g;
 			if( 'on' eq $mrev ){
 				if( $chkvote eq $m_kvote ){
 					close(DB);
-					&err("ˆêl‘gD•[—}§‹@”\\‚Éˆø‚Á‚©‚©‚è‚Ü‚µ‚½B");
+					&err("ä¸€äººçµ„ç¹”ç¥¨æŠ‘åˆ¶æ©Ÿèƒ½\ã«å¼•ã£ã‹ã‹ã‚Šã¾ã—ãŸã€‚");
 				}
 			}else{
-				if( $chkvote eq $m_kvote ){ #2002/12/03 •Ï”–¼‚ªŠÔˆá‚Á‚Ä‚¢‚½
-					$m_kchat =~ s/@//g;$m_kchat =~ s/ //g;$m_kchat =~ s/<br>//ig;
+				if( $chkvote eq $m_kvote ){ #2002/12/03 å¤‰æ•°åãŒé–“é•ã£ã¦ã„ãŸ
+					$m_kchat =~ s/ã€€//g;$m_kchat =~ s/ //g;$m_kchat =~ s/<br>//ig;
 					if( $m_kchat eq $m_chkchat){
 						close(DB);
-						&err("“ñd‘‚«‚İ‹Ö~‹@”\\‚Éˆø‚Á‚©‚©‚è‚Ü‚µ‚½B");
+						&err("äºŒé‡æ›¸ãè¾¼ã¿ç¦æ­¢æ©Ÿèƒ½\ã«å¼•ã£ã‹ã‹ã‚Šã¾ã—ãŸã€‚");
 					}else{
 						last;
 					}
@@ -173,7 +174,7 @@ open(DB,"+<./$logdir/$room.dat") || &err("ƒƒOƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñB");
 			}
 		}
 	}
-#V‹K“Š•[‚ÍA‰Á‚¦‚é
+#æ–°è¦æŠ•ç¥¨ã¯ã€åŠ ãˆã‚‹
 	@lines = reverse (@lines);
 	push(@lines,"$pwhost:#$times:#$mrev:#$vote:#$chat:#$date:#:#\n");
 	$m_chkday = (($lday - ($times - $otimes))/$lday)*$daylimit;
@@ -203,11 +204,11 @@ chmod 0666, "./$coudir/$m_hatu.$room.dat";
 
 }#writelog END
 ##############################################################################
-#“Š•[Œ‹‰Ê‰æ–Ê
+#æŠ•ç¥¨çµæœç”»é¢
 sub resulthtml{
 my($m_hatu,$m_total,$m_line,$m_dmy1,$m_wtimes,$m_wrev,$m_wvote,$m_wcvote,$m_percent,$m_img,$m_count,$m_wdetail,$m_wpwhost,$m_wdate,$m_comtimes,$m_ranka,$m_rankb,$m_rankc,$m_hatu);
 
-open(DB,">./$tmpdir/$room.$times.$pwhost") || &err("ƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+open(DB,">./$tmpdir/$room.$times.$pwhost") || &err("ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 
 print DB <<"_HTML_";
 <HTML><HEAD>
@@ -217,15 +218,15 @@ $metacode
 <TITLE>$title </TITLE><STYLE><!--.linka{text-decoration : none;color : #A1FE9F;vertical-align : baseline;}
 --></STYLE></HEAD>
 $body
-[<A HREF="../$cginame1">ƒŠƒXƒg‚É–ß‚é</A>] [<A href="#now">Å‹ß‚Ì“Š•[</A>]<FONT COLOR="red"><B> ¦@ƒjƒ…[ƒXƒTƒCƒg‚©‚ç‚Ì“Š•[‚Å‘å•Ï–À˜f‚µ‚Ä‚¢‚Ü‚·B“Š•[” ‚Ö‚ÌƒŠƒ“ƒN‚Í‚²‰“—¶‚­‚¾‚³‚¢B</B></FONT><BR><BR>
+[<A HREF="../$cginame1">ãƒªã‚¹ãƒˆã«æˆ»ã‚‹</A>] [<A href="#now">æœ€è¿‘ã®æŠ•ç¥¨</A>]<FONT COLOR="red"><B> â€»ã€€ãƒ‹ãƒ¥ãƒ¼ã‚¹ã‚µã‚¤ãƒˆã‹ã‚‰ã®æŠ•ç¥¨ã§å¤§å¤‰è¿·æƒ‘ã—ã¦ã„ã¾ã™ã€‚æŠ•ç¥¨ç®±ã¸ã®ãƒªãƒ³ã‚¯ã¯ã”é æ…®ãã ã•ã„ã€‚</B></FONT><BR><BR>
 <FONT SIZE=+2 COLOR="hotpink"><B>${title} </B></FONT>
 <BR><BR>
 <DIV ALIGN=right>($odate)</DIV><BR>
 <HR><PRE><FONT SIZE=3>$ochat </FONT></PRE>
-<HR>Œ»İ‚ÌƒAƒ“ƒP[ƒgWŒvŒ‹‰Ê‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B<BR>
-‚»‚ê‚¼‚ê‚Ì‘I‘ğ€–Ú‚ğƒNƒŠƒbƒN‚·‚é‚ÆƒRƒƒ“ƒg‚ğ‚İ‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BiŒÃ‚¢“Š•[‡‚É‚È‚Á‚Ä‚¢‚Ü‚·Bj<BR>
+<HR>ç¾åœ¨ã®ã‚¢ãƒ³ã‚±ãƒ¼ãƒˆé›†è¨ˆçµæœã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã§ã™ã€‚<BR>
+ãã‚Œãã‚Œã®é¸æŠé …ç›®ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã¿ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ï¼ˆå¤ã„æŠ•ç¥¨é †ã«ãªã£ã¦ã„ã¾ã™ã€‚ï¼‰<BR>
 <TABLE border WIDTH=100%>
-<TR><TH NOWRAP>‡ˆÊ</TH><TH NOWRAP>‘I‘ğ€–Ú</TH><TH NOWRAP>—LŒø•[”i“Š•[”j</TH><TH NOWRAP>Š„‡</TH><TH>ƒOƒ‰ƒt</TH></TR>
+<TR><TH NOWRAP>é †ä½</TH><TH NOWRAP>é¸æŠé …ç›®</TH><TH NOWRAP>æœ‰åŠ¹ç¥¨æ•°ï¼ˆæŠ•ç¥¨æ•°ï¼‰</TH><TH NOWRAP>å‰²åˆ</TH><TH>ã‚°ãƒ©ãƒ•</TH></TR>
 _HTML_
 
 $m_hatu = @lines;
@@ -236,7 +237,7 @@ foreach $m_line (@lines) {
 	$m_dmy =~s/\*//g;
 	next if( $m_dmy eq "");
 	$m_wcvote = $m_wvote;
-	$m_wcvote =~ s/ //g;$m_wcvote =~ s/@//g;
+	$m_wcvote =~ s/ //g;$m_wcvote =~ s/ã€€//g;
 	if ( $m_wcvote ne '') {
 		unless($ans{$m_wcvote}){
 			$ans{$m_wcvote} = $m_wvote;
@@ -275,20 +276,20 @@ if($m_hatu >= $max){
 
 print  DB <<"_HTML_";
 </TABLE>
-<B>—LŒø“Š•[‘”$m_total•[i“Š•[‘”$m_hatu•[j</B><BR><P>
-<HR><A name="now">Å‹ß‚Ì“Š•[</A>i‰ß‹$comtimeŠÔ‘OA‚Ü‚½‚Í$commax“Š•[j@
-<A HREF=\"\.\.\/$cginame2?allres=on&room=$room\">‘S“Š•[•\\¦</A><BR>
+<B>æœ‰åŠ¹æŠ•ç¥¨ç·æ•°$m_totalç¥¨ï¼ˆæŠ•ç¥¨ç·æ•°$m_hatuç¥¨ï¼‰</B><BR><P>
+<HR><A name="now">æœ€è¿‘ã®æŠ•ç¥¨</A>ï¼ˆéå»$comtimeæ™‚é–“å‰ã€ã¾ãŸã¯$commaxæŠ•ç¥¨ï¼‰ã€€
+<A HREF=\"\.\.\/$cginame2?allres=on&room=$room\">å…¨æŠ•ç¥¨è¡¨\ç¤º</A><BR>
 _HTML_
 
 }else{
 
 print  DB <<"_HTML_";
 </TABLE>
-<B>—LŒø“Š•[‘”$m_total•[i“Š•[‘”$m_hatu•[j</B><BR><P>
+<B>æœ‰åŠ¹æŠ•ç¥¨ç·æ•°$m_totalç¥¨ï¼ˆæŠ•ç¥¨ç·æ•°$m_hatuç¥¨ï¼‰</B><BR><P>
 <FORM METHOD="POST" ACTION="../$cginame2">
 <INPUT TYPE=hidden NAME="room" VALUE="$room">
 <SELECT NAME="vote" SIZE="1">
-<OPTION VALUE="0" SELECTED>‘I‘ğ‚µ‚Ä‚ËB
+<OPTION VALUE="0" SELECTED>é¸æŠã—ã¦ã­ã€‚
 _HTML_
 
 foreach (@oplist) {
@@ -297,16 +298,16 @@ foreach (@oplist) {
 
 print DB <<"_HTML_";
 </SELECT><BR>
-€–Ú‚ğ’Ç‰Á‚·‚éê‡¨<INPUT TYPE=text NAME=\"voten\" SIZE=\"60\">‘SŠp${votemax}•¶š‚Ü‚Å<BR>
-<BR>ã‹L€–Ú‚ğ‘I‘ğ‚µ‚½——R‚ğŠÈ’P‚É‚¨‘‚«‰º‚³‚¢Bi•K{jiƒ^ƒO‚Íg‚¦‚Ü‚¹‚ñBj<BR>
+é …ç›®ã‚’è¿½åŠ ã™ã‚‹å ´åˆâ†’<INPUT TYPE=text NAME=\"voten\" SIZE=\"60\">å…¨è§’${votemax}æ–‡å­—ã¾ã§<BR>
+<BR>ä¸Šè¨˜é …ç›®ã‚’é¸æŠã—ãŸç†ç”±ã‚’ç°¡å˜ã«ãŠæ›¸ãä¸‹ã•ã„ã€‚ï¼ˆå¿…é ˆï¼‰ï¼ˆã‚¿ã‚°ã¯ä½¿ãˆã¾ã›ã‚“ã€‚ï¼‰<BR>
 <TEXTAREA NAME="chat" rows="10" cols="80"></TEXTAREA><BR>
-i${brmax}sA${chatmax}•¶š‚Ü‚Åj<BR>
-<input type="radio" name="mr" value="on">—LŒø•[<input type="radio" name="mr" value="off" checked><FONT COLOR=\"#0000FF\">–³Œø•[iˆÓŒ©‚Ì‚İj</FONT><BR>
+ï¼ˆ${brmax}è¡Œã€${chatmax}æ–‡å­—ã¾ã§ï¼‰<BR>
+<input type="radio" name="mr" value="on">æœ‰åŠ¹ç¥¨<input type="radio" name="mr" value="off" checked><FONT COLOR=\"#0000FF\">ç„¡åŠ¹ç¥¨ï¼ˆæ„è¦‹ã®ã¿ï¼‰</FONT><BR>
 <BR>
-<INPUT TYPE=submit VALUE="“Š•[‚·‚é"><FONT size="-1" COLOR="red"> <A href="http://www.zianplus.net/guideline.txt">—˜—p‹K–ñ</A>‚ğ“Ç‚İA‹K–ñ‚ÉŠ®‘S‚É“¯ˆÓ‚µ‚Ä‚©‚ç‘—M‚µ‚Ä‚­‚¾‚³‚¢B</FONT>
-<INPUT TYPE=reset VALUE="ƒŠƒZƒbƒg"></FORM>
-<HR><A name="now">Å‹ß‚Ì“Š•[</A>i‰ß‹$comtimeŠÔ‘OA‚Ü‚½‚Í$commax“Š•[j@
-<A HREF=\"\.\.\/$cginame2?allres=on&room=$room\">‘S“Š•[•\\¦</A><BR>
+<INPUT TYPE=submit VALUE="æŠ•ç¥¨ã™ã‚‹"><FONT size="-1" COLOR="red"> <A href="http://www.zianplus.net/guideline.txt">åˆ©ç”¨è¦ç´„</A>ã‚’èª­ã¿ã€è¦ç´„ã«å®Œå…¨ã«åŒæ„ã—ã¦ã‹ã‚‰é€ä¿¡ã—ã¦ãã ã•ã„ã€‚</FONT>
+<INPUT TYPE=reset VALUE="ãƒªã‚»ãƒƒãƒˆ"></FORM>
+<HR><A name="now">æœ€è¿‘ã®æŠ•ç¥¨</A>ï¼ˆéå»$comtimeæ™‚é–“å‰ã€ã¾ãŸã¯$commaxæŠ•ç¥¨ï¼‰ã€€
+<A HREF=\"\.\.\/$cginame2?allres=on&room=$room\">å…¨æŠ•ç¥¨è¡¨\ç¤º</A><BR>
 <HR>
 <script type="text/javascript"><!--
   amazon_ad_tag = "wwwzianplusne-22";
@@ -323,7 +324,7 @@ print DB <<"_HTML_";
   amazon_ad_border = "hide";
 //--></script>
 <script type="text/javascript" src="http://www.assoc-amazon.jp/s/ads.js"></script>
-<noscript><FONT SIZE=1 COLOR="red">‚±‚Ìƒy[ƒW‚Å‚ÍJavaScript‚ğg—p‚µ‚Ä‚¢‚Ü‚·B</FONT></noscript>
+<noscript><FONT SIZE=1 COLOR="red">ã“ã®ãƒšãƒ¼ã‚¸ã§ã¯JavaScriptã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚</FONT></noscript>
 _HTML_
 
 }#if
@@ -344,19 +345,19 @@ foreach $m_line (@lines) {
 	$m_count++;
 }#foreach
 print DB "<HR>\n";
-print DB "[<A HREF=\"../$cginame1\">ƒŠƒXƒg‚É–ß‚é</A>]<BR>\n";
+print DB "[<A HREF=\"../$cginame1\">ãƒªã‚¹ãƒˆã«æˆ»ã‚‹</A>]<BR>\n";
 print DB "$maruc\n";
 print DB "</BODY></HTML>\n";
 close(DB);
 
 unlink "./$htmdir/$room.html";
 rename("./$tmpdir/$room.$times.$pwhost","./$htmdir/$room.html");
-unlink "./$tmpdir/$room.$times.$pwhost";	#”O‚Ìˆ×
+unlink "./$tmpdir/$room.$times.$pwhost";	#å¿µã®ç‚º
 chmod 0666, "./$htmdir/$room.html";
 
 }#resulthtml END
 ##############################################################################
-#ƒRƒƒ“ƒg‰æ–Ê
+#ã‚³ãƒ¡ãƒ³ãƒˆç”»é¢
 sub detailhtml {
 my($m_keyword,$m_line,$m_dmy,$m_times,$m_wrev,$m_wvote,$m_wdetail,$m_wdate);
 
@@ -366,14 +367,14 @@ print <<"_HTML_";
 $metacode
 <TITLE>$title </TITLE></HEAD>
 $body
-[<A HREF="./$htmdir/$room.html">“Š•[Œ‹‰Ê‚É–ß‚é</A>]<A name="ue">&nbsp;</A><A href="#sita">¤</A><BR><BR>
-[${detail}]‚É‚Â‚¢‚Ä‚ÌƒRƒƒ“ƒgB<BR>
+[<A HREF="./$htmdir/$room.html">æŠ•ç¥¨çµæœã«æˆ»ã‚‹</A>]<A name="ue">&nbsp;</A><A href="#sita">â–½</A><BR><BR>
+[${detail}]ã«ã¤ã„ã¦ã®ã‚³ãƒ¡ãƒ³ãƒˆã€‚<BR>
 <HR SIZE=5>
-<noscript><FONT SIZE=+5 COLOR="red">‚±‚Ìƒy[ƒW‚Å‚ÍJavaScript‚ğg—p‚µ‚Ä‚¢‚Ü‚·B(‚½‚Ü‚ÉƒVƒƒƒbƒtƒ‹‚µ‚Ü‚·‚Ë)</FONT></noscript>
+<noscript><FONT SIZE=+5 COLOR="red">ã“ã®ãƒšãƒ¼ã‚¸ã§ã¯JavaScriptã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚(ãŸã¾ã«ã‚·ãƒ£ãƒƒãƒ•ãƒ«ã—ã¾ã™ã­)</FONT></noscript>
 _HTML_
 
 $m_keyword = $detail;
-$m_keyword =~ s/ //g;$m_keyword =~ s/@//g;
+$m_keyword =~ s/ //g;$m_keyword =~ s/ã€€//g;
 
 print "<FORM method=\"POST\" ACTION=\"./$cginame2\">\n" if($root eq $masterkey);
 
@@ -381,7 +382,7 @@ $m_hatu = @lines;
 foreach $m_line (@lines) {
 	next unless($m_line=~/:#/);
 	($m_dmy, $m_times, $m_wrev, $m_wvote, $m_wchat,$m_wdate) = split(/:#/, $m_line);
-	$m_wvote =~ s/ //g;$m_wvote =~ s/@//g;
+	$m_wvote =~ s/ //g;$m_wvote =~ s/ã€€//g;
 	if($m_wvote eq $m_keyword ){
 		print "<INPUT TYPE=checkbox NAME=\"erase\" VALUE=\"$m_times\">\n" if($root eq $masterkey);
 		if($m_wrev eq 'on'){
@@ -391,17 +392,17 @@ foreach $m_line (@lines) {
 		}
 	}
 }#foreach
-print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="detail" VALUE="$detail" ><INPUT TYPE=hidden NAME="room" VALUE="$room" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="íœ"></FORM>\n! if($root eq $masterkey);
+print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="detail" VALUE="$detail" ><INPUT TYPE=hidden NAME="room" VALUE="$room" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="å‰Šé™¤"></FORM>\n! if($root eq $masterkey);
 
 if($m_hatu >= $max){
 
 print   <<"_HTML_";
-[<A HREF=\"./$htmdir/$room.html\">“Š•[Œ‹‰Ê‚É–ß‚é</A>]<BR>
+[<A HREF=\"./$htmdir/$room.html\">æŠ•ç¥¨çµæœã«æˆ»ã‚‹</A>]<BR>
 <H5 align=right><FORM method="POST" ACTION="./$cginame2">
 <INPUT TYPE=hidden NAME="detail" VALUE="$detail" >
 <INPUT TYPE=hidden NAME="room" VALUE="$room" >
 <INPUT TYPE=text NAME="root" SIZE="10" VALUE="$root">
-<INPUT type=submit value="ŠÇ—"><BR>
+<INPUT type=submit value="ç®¡ç†"><BR>
 $maruc
 </BODY></HTML>
 _HTML_
@@ -409,18 +410,18 @@ _HTML_
 }else{
 
 print   <<"_HTML_";
-<B>${title}</B><BR>€–Ú[${detail}]
+<B>${title}</B><BR>é …ç›®[${detail}]
 <FORM METHOD="POST" ACTION="./$cginame2">
 <INPUT TYPE=hidden NAME="room" VALUE="$room">
 <INPUT TYPE=hidden NAME="vote" VALUE="$detail">
-‚±‚Ì€–Ú‚É“Š•[‚·‚éê‡A“Š•[‚Ì——R‚ğŠÈ’P‚É‚¨‘‚«‰º‚³‚¢Bi•K{jiƒ^ƒO‚Íg‚¦‚Ü‚¹‚ñBj<BR>
+ã“ã®é …ç›®ã«æŠ•ç¥¨ã™ã‚‹å ´åˆã€æŠ•ç¥¨ã®ç†ç”±ã‚’ç°¡å˜ã«ãŠæ›¸ãä¸‹ã•ã„ã€‚ï¼ˆå¿…é ˆï¼‰ï¼ˆã‚¿ã‚°ã¯ä½¿ãˆã¾ã›ã‚“ã€‚ï¼‰<BR>
 <TEXTAREA NAME="chat" rows="10" cols="80"></TEXTAREA><BR>
-i${brmax}sA${chatmax}•¶š‚Ü‚Åj<BR>
-<input type="radio" name="mr" value="on">—LŒø•[<input type="radio" name="mr" value="off" checked><FONT COLOR=\"#0000FF\">–³Œø•[iˆÓŒ©‚Ì‚İj</FONT><BR>
+ï¼ˆ${brmax}è¡Œã€${chatmax}æ–‡å­—ã¾ã§ï¼‰<BR>
+<input type="radio" name="mr" value="on">æœ‰åŠ¹ç¥¨<input type="radio" name="mr" value="off" checked><FONT COLOR=\"#0000FF\">ç„¡åŠ¹ç¥¨ï¼ˆæ„è¦‹ã®ã¿ï¼‰</FONT><BR>
 <BR>
-<INPUT TYPE=submit VALUE="“Š•[‚·‚é"><FONT size="-1" COLOR="red"><A href="http://www.zianplus.net/guideline.txt">—˜—p‹K–ñ</A>‚ğ“Ç‚İA‹K–ñ‚ÉŠ®‘S‚É“¯ˆÓ‚µ‚Ä‚©‚ç‘—M‚µ‚Ä‚­‚¾‚³‚¢B</FONT>
-<INPUT TYPE=reset VALUE="ƒŠƒZƒbƒg"></FORM>
-iˆêl‘gD•[—}§‹@”\\‚ª•t‚¢‚Ä‚¢‚Ü‚·Bj<HR>
+<INPUT TYPE=submit VALUE="æŠ•ç¥¨ã™ã‚‹"><FONT size="-1" COLOR="red"><A href="http://www.zianplus.net/guideline.txt">åˆ©ç”¨è¦ç´„</A>ã‚’èª­ã¿ã€è¦ç´„ã«å®Œå…¨ã«åŒæ„ã—ã¦ã‹ã‚‰é€ä¿¡ã—ã¦ãã ã•ã„ã€‚</FONT>
+<INPUT TYPE=reset VALUE="ãƒªã‚»ãƒƒãƒˆ"></FORM>
+ï¼ˆä¸€äººçµ„ç¹”ç¥¨æŠ‘åˆ¶æ©Ÿèƒ½\ãŒä»˜ã„ã¦ã„ã¾ã™ã€‚ï¼‰<HR>
 <script type="text/javascript"><!--
   amazon_ad_tag = "wwwzianplusne-22";
   amazon_ad_width = "468";
@@ -437,12 +438,12 @@ print   <<"_HTML_";
 //--></script>
 <script type="text/javascript" src="http://www.assoc-amazon.jp/s/ads.js"></script>
 <HR>
-[<A HREF=\"./$htmdir/$room.html\">“Š•[Œ‹‰Ê‚É–ß‚é</A>]<A name="sita">&nbsp;</A><A href="#ue">¢</A><BR>
+[<A HREF=\"./$htmdir/$room.html\">æŠ•ç¥¨çµæœã«æˆ»ã‚‹</A>]<A name="sita">&nbsp;</A><A href="#ue">â–³</A><BR>
 <H5 align=right><FORM method="POST" ACTION="./$cginame2">
 <INPUT TYPE=hidden NAME="detail" VALUE="$detail" >
 <INPUT TYPE=hidden NAME="room" VALUE="$room" >
 <INPUT TYPE=text NAME="root" SIZE="10" VALUE="$root">
-<INPUT type=submit value="ŠÇ—"><BR>
+<INPUT type=submit value="ç®¡ç†"><BR>
 $maruc
 </BODY></HTML>
 _HTML_
@@ -451,7 +452,7 @@ _HTML_
 
 }#detailhtml END
 ##############################################################################
-#‘SƒRƒƒ“ƒg‰æ–Ê
+#å…¨ã‚³ãƒ¡ãƒ³ãƒˆç”»é¢
 sub allreshtml {
 my($m_line,$m_dmy,$m_times,$m_wrev,$m_wvote,$m_wdate,$m_hatu);
 
@@ -462,8 +463,8 @@ print <<"_HTML_";
 $metacode
 <TITLE>$title </TITLE></HEAD>
 $body
-[<A HREF="./$htmdir/$room.html">“Š•[Œ‹‰Ê‚É–ß‚é</A>]<A name="ue">&nbsp;</A><A href="#sita">¤</A><BR><BR>
-<B>$title</B>‚Ì“Š•[‘” $m_hatu•[<BR>
+[<A HREF="./$htmdir/$room.html">æŠ•ç¥¨çµæœã«æˆ»ã‚‹</A>]<A name="ue">&nbsp;</A><A href="#sita">â–½</A><BR><BR>
+<B>$title</B>ã®æŠ•ç¥¨ç·æ•° $m_hatuç¥¨<BR>
 <HR SIZE=5>
 _HTML_
 
@@ -478,43 +479,43 @@ foreach $m_line (@lines) {
 		print "<FONT COLOR=\"#0000FF\"><B>$m_wvote </B><BR><BR><PRE><FONT SIZE=3>$m_wchat </FONT></FONT></PRE><FONT COLOR=\"#888888\" SIZE=-1>($m_wdate)</FONT><HR>\n";
 	}
 }#foreach
-print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="allres" VALUE="$allres" ><INPUT TYPE=hidden NAME="room" VALUE="$room" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="íœ"></FORM>\n! if($root eq $masterkey);
+print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="allres" VALUE="$allres" ><INPUT TYPE=hidden NAME="room" VALUE="$room" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="å‰Šé™¤"></FORM>\n! if($root eq $masterkey);
 
 print <<"_HTML_";
-[<A HREF=\"./$htmdir/$room.html\">“Š•[Œ‹‰Ê‚É–ß‚é</A>]<A name="sita">&nbsp;</A><A href="#ue">¢</A><BR>
+[<A HREF=\"./$htmdir/$room.html\">æŠ•ç¥¨çµæœã«æˆ»ã‚‹</A>]<A name="sita">&nbsp;</A><A href="#ue">â–³</A><BR>
 <H5 align=right><FORM method="POST" ACTION="./$cginame2">
 <INPUT TYPE=hidden NAME="allres" VALUE="$allres" >
 <INPUT TYPE=hidden NAME="room" VALUE="$room" >
 <INPUT TYPE=text NAME="root" SIZE="10" VALUE="$root">
-<INPUT type=submit value="ŠÇ—"><BR>
+<INPUT type=submit value="ç®¡ç†"><BR>
 $maruc
 </BODY></HTML>
 _HTML_
 }#allreslhtml END
 ##############################################################################
-#‚t‚q‚k—p•ÏŠ·
+#ï¼µï¼²ï¼¬ç”¨å¤‰æ›
 sub URLEncoder {
 $encode = $_[0];
 $encode =~ s/([^0-9A-Za-z_ ])/"%".unpack("H2",$1)/ge;
 $encode =~ tr/ /+/;
 }
 ##################################################
-#V‹K˜b‘èƒ‹[ƒ€‚ğİ’u
+#æ–°è¦è©±é¡Œãƒ«ãƒ¼ãƒ ã‚’è¨­ç½®
 sub make {
 my($m_set,$m_title2,$m_dmy,$m_ddata,$m_chkpwlhost,$m_chktimes,$m_chkcou,$m_chktm,$m_roomtotal,$m_room,$m_chkxhost,$m_chkxcou);
 
-opendir(DIR,"$logdir") || &err("ƒƒO‚ÌƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñB");
+opendir(DIR,"$logdir") || &err("ãƒ­ã‚°ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	@readlist = grep(/dat/, readdir(DIR));
 closedir(DIR);
 $test = @readlist;
 if($test >= $forbid) {
-    &err("” ”‚ªì¬ãŒÀ\‚É’B‚µ‚Ü‚µ‚½");
+    &err("ç®±æ•°ãŒä½œæˆä¸Šé™\ã«é”ã—ã¾ã—ãŸ");
 }
 if(&is_banned_proxy()) {
-    &err("‚»‚ÌƒzƒXƒg‚©‚ç‚Ì” ì¬‚Ío—ˆ‚Ü‚¹‚ñBƒ}ƒCƒiƒX‚ğŒä—˜—p‰º‚³‚¢BA<!-- b $proxycheck,$host,$hosta,$xhost -->");
+    &err("ãã®ãƒ›ã‚¹ãƒˆã‹ã‚‰ã®ç®±ä½œæˆã¯å‡ºæ¥ã¾ã›ã‚“ã€‚ãƒã‚¤ãƒŠã‚¹ã‚’å¾¡åˆ©ç”¨ä¸‹ã•ã„ã€‚A<!-- b $proxycheck,$host,$hosta,$xhost -->");
 }
 if($ban_open_proxy && &is_open_proxy()) {
-    &err("‚»‚ÌƒzƒXƒg‚©‚ç‚Ì” ì¬‚Ío—ˆ‚Ü‚¹‚ñBƒ}ƒCƒiƒX‚ğŒä—˜—p‰º‚³‚¢BB<!-- o $proxycheck,$host,$hosta,$xhost -->");
+    &err("ãã®ãƒ›ã‚¹ãƒˆã‹ã‚‰ã®ç®±ä½œæˆã¯å‡ºæ¥ã¾ã›ã‚“ã€‚ãƒã‚¤ãƒŠã‚¹ã‚’å¾¡åˆ©ç”¨ä¸‹ã•ã„ã€‚B<!-- o $proxycheck,$host,$hosta,$xhost -->");
 }
 
 $m_chktimes = $times - 24*60*60;
@@ -526,36 +527,36 @@ foreach $room (@readlist) {
 		$m_set = <DB>;
 	close(DB);
 	($m_title2,$m_dmy,$m_ddata,$m_chkpwlhost,$m_chktm,$m_dmy,$m_dmy,$m_chkxhost) = split(/:#/,$m_set);
-	$m_title2 =~ s/ //g;$m_title2 =~ s/@//g;
-	&err("Šù‚É“¯‚¶ƒ^ƒCƒgƒ‹‚ÌƒAƒ“ƒP[ƒg‚ª‚ ‚è‚Ü‚·B") if($chktitle eq $m_title2);
+	$m_title2 =~ s/ //g;$m_title2 =~ s/ã€€//g;
+	&err("æ—¢ã«åŒã˜ã‚¿ã‚¤ãƒˆãƒ«ã®ã‚¢ãƒ³ã‚±ãƒ¼ãƒˆãŒã‚ã‚Šã¾ã™ã€‚") if($chktitle eq $m_title2);
 	if( ($m_chkpwlhost eq $pwlhost) && ($m_chktm >= $m_chktimes) ){
 	    	$m_chkcou++;
 		if( $m_chkcou >= $hakosokudo ){
-			&err("” ‚ª‘½‚·‚¬‚Å‚·B<!-- $proxycheck,$host -->");
+			&err("ç®±ãŒå¤šã™ãã§ã™ã€‚<!-- $proxycheck,$host -->");
 		}
 	}
 	if( ($m_chkxhost ne "") && ($m_chkxhost eq $xhost) 
 	    && ($m_chktm >= $m_chktimes)) {
 	    	$m_chkxcou++;
 		if( ($xhost ne "") &&  ($m_chkxcou >= $xhakosokudo) ) {
-		    # ˜R‚ê‹ø—p
-		    &err("” ‚ª‘½‚·‚¬‚Å‚·B<!-- x $proxycheck,$host -->");
+		    # æ¼ã‚Œä¸²ç”¨
+		    &err("ç®±ãŒå¤šã™ãã§ã™ã€‚<!-- x $proxycheck,$host -->");
 		}
 	}
 }#foreach
 $ddata = sprintf("%4.2f",$sday);
 $m_set = "$title:#$vkey:#$ddata:#$pwlhost:#$times:#$chat:#$date:#$xhost:#:#\n";
-open(DB,">./$logdir/$times.dat") || &err("ƒƒOƒtƒ@ƒCƒ‹‚ªì‚ê‚Ü‚¹‚ñB");
+open(DB,">./$logdir/$times.dat") || &err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œã‚Œã¾ã›ã‚“ã€‚");
 	print DB $m_set;
 close(DB);
 chmod 0666, "./$logdir/$times.dat";
 
-#ƒJƒEƒ“ƒgƒtƒ@ƒCƒ‹‚ğì‚é
+#ã‚«ã‚¦ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‹
 open(DB,">./$coudir/0.$times.dat") || return;
 close(DB);
 chmod 0666, "./$coudir/0.$times.dat";
 
-#Œã‚Ìˆ——p‚Éƒf[ƒ^‚ğˆÚ‚·
+#å¾Œã®å‡¦ç†ç”¨ã«ãƒ‡ãƒ¼ã‚¿ã‚’ç§»ã™
 $room = $times;
 $ochat = $chat;
 $odate = $date;
@@ -591,7 +592,7 @@ if($m_roomtotal >= $lbox ){
 
 }#make END
 ##################################################
-#‘‚«‚İ‘¬“xƒ`ƒFƒbƒN
+#æ›¸ãè¾¼ã¿é€Ÿåº¦ãƒã‚§ãƒƒã‚¯
 sub wspeed{
 my($m_line,$m_eqtime,$m_eqrh,$m_chktime,$m_flag,$m_eqxh);
 
@@ -612,11 +613,11 @@ open(DB,"+<./$wspeedfile") || return;
 		push(@new,$m_line);
 	}
 	if( &is_annonymous_proxy() && ($m_flag > $xwspeedcou) ) {
-	    # “½–¼‹ø‘¬“x‹K§
-	    &err("‘‚«‚İ‘¬“xˆá”½‚Å‚·B<!-- x $m_flag,$proxycheck,$host -->");
+	    # åŒ¿åä¸²é€Ÿåº¦è¦åˆ¶
+	    &err("æ›¸ãè¾¼ã¿é€Ÿåº¦é•åã§ã™ã€‚<!-- x $m_flag,$proxycheck,$host -->");
 	}
 	if( $m_flag > $wspeedcou ){
-		&err("‘‚«‚İ‘¬“xˆá”½‚Å‚·B<!-- $m_flag,$proxycheck,$host -->");
+		&err("æ›¸ãè¾¼ã¿é€Ÿåº¦é•åã§ã™ã€‚<!-- $m_flag,$proxycheck,$host -->");
 	}
 	$m_line = "$times\,$pwhost\,$xhost\n";
 	push(@new,$m_line);
@@ -625,18 +626,18 @@ open(DB,"+<./$wspeedfile") || return;
 close(DB);
 }#wspeed END
 ##################################################
-#‚g‚s‚l‚k‚ÌÄì¬
+#ï¼¨ï¼´ï¼­ï¼¬ã®å†ä½œæˆ
 sub remakehtml {
 my($m_set,$m_file,$m_hatu);
 
-opendir(DIR,"$coudir") || &err("ƒJƒEƒ“ƒ^ƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñB");
+opendir(DIR,"$coudir") || &err("ã‚«ã‚¦ãƒ³ã‚¿ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	@dellist = grep(/dat/, readdir(DIR));
 closedir(DIR);
 foreach (@dellist) {
 	unlink "./$coudir/$_";
 }#foreach
 
-opendir(DIR,"$logdir")|| &err("ƒƒOƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñB");
+opendir(DIR,"$logdir")|| &err("ãƒ­ã‚°ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	@readlist = grep(/dat/, readdir(DIR));
 closedir(DIR);
 
@@ -660,24 +661,24 @@ foreach $room (@readlist) {
 }#foreach
 }#remakehtml END
 ##################################################
-#ƒƒOíœ
+#ãƒ­ã‚°å‰Šé™¤
 sub deletevote {
 my($m_dmy,$m_erase,$m_line,$m_dmy, $m_times,$m_set,$m_filedata,$m_pwhost,$m_mrev,$m_vote,$m_chat,$m_date);
 
-&err("ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·B") if($root ne $masterkey);
+&err("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™ã€‚") if($root ne $masterkey);
 
-open(DB,"+<./$logdir/$room.dat") || &err("ƒƒOƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñB");
+open(DB,"+<./$logdir/$room.dat") || &err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“ã€‚");
 	eval 'flock(DB,2);';
 	@lines = <DB>;
 	$m_set=shift(@lines);
 	($title,$vchkkey,$ddata,$opwhost,$otimes,$ochat,$odate,$oxhost) = split(/:#/,$m_set);
 	if( $vkey ne $vchkkey ){
 		close(DB);
-		&err("ƒƒOƒtƒ@ƒCƒ‹‚ª‰ó‚ê‚Ä‚¢‚Ü‚·B");
+		&err("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒå£Šã‚Œã¦ã„ã¾ã™ã€‚");
 	}
 
-	$buffer=~s/&//g;	#—]•ª‚È•”•ª‚ğíœ
-	(@erase) = split(/erase=/, $buffer);	#íœƒŠƒXƒg‚ğì¬
+	$buffer=~s/&//g;	#ä½™åˆ†ãªéƒ¨åˆ†ã‚’å‰Šé™¤
+	(@erase) = split(/erase=/, $buffer);	#å‰Šé™¤ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 	$m_dmy = shift( @erase);
 	foreach $m_erase(@erase){
 		$m_erase =~s/\D//g;
