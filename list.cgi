@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 #
-#‚ä‚¢‚Ú[‚Ç2.001(list.cgi)
-#¦‚±‚Ìcgi‚Ísnog‚Ì»ì‚µ‚½vote4‚ğ‰ü—Ç‚µ‚½•¨‚Å‚·
-#¦‹–‰Â‚ªæ‚ê‚éìÒ‚ª­‚È‚¢ˆ×A‚Æ‚è‚ ‚¦‚¸“ñŸ”z•z‚Æg—p‚Í•s‰Â‚É‚È‚Á‚Ä‚Ü‚·
+#ã‚†ã„ã¼ãƒ¼ã©2.001(list.cgi)
+#â€»ã“ã®cgiã¯snogã®è£½ä½œã—ãŸvote4ã‚’æ”¹è‰¯ã—ãŸç‰©ã§ã™
+#â€»è¨±å¯ãŒå–ã‚Œã‚‹ä½œè€…ãŒå°‘ãªã„ç‚ºã€ã¨ã‚Šã‚ãˆãšäºŒæ¬¡é…å¸ƒã¨ä½¿ç”¨ã¯ä¸å¯ã«ãªã£ã¦ã¾ã™
 
 require './jcodeLE.pl';
 require './prei.cgi';
@@ -21,12 +21,12 @@ if(($delete eq 'on') && ($postf eq 'on')){
 }
 exit;
 ##################################################
-#‰Šúİ’è
+#åˆæœŸè¨­å®š
 sub init{
-$limax=100;				#‚Pƒy[ƒW‚É•\¦‚·‚éƒŠƒXƒg•W€”
+$limax=100;				#ï¼‘ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã™ã‚‹ãƒªã‚¹ãƒˆæ¨™æº–æ•°
 }#init END
 ##################################################
-#ƒy[ƒWì¬
+#ãƒšãƒ¼ã‚¸ä½œæˆ
 sub html {
 my ( @list );
 open( IN, "list.txt" );
@@ -58,25 +58,25 @@ $body
 <script src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fa.hatena.ne.jp%2Fnatori%2Frss&amp;num=5&amp;desc=500&amp;targ=y&amp;utf=y" type="text/javascript" charset="utf-8"></script>
 <noscript><a href="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fa.hatena.ne.jp%2Fnatori%2Frss&amp;num=5&amp;desc=500&amp;targ=y&amp;utf=y&amp;html=y">rss</a></noscript>
 </FONT>
-<FONT size="-1">[<A href="#make">V‹K” ì¬Q</A>][<A href="http://www.zianplus.net">ƒCƒ“ƒfƒbƒNƒX</A>][<A href="http://www.zianplus.net/mail.htm">ŠÇ—lˆ¶</A>][<A href="http://www.zianplus.net/cgi-bin/php/zianchat.cgi">ƒ`ƒƒƒbƒg</A>][<A href="http://www.zianplus.net/cgi-bin/vote-/list.cgi">©“®ƒAƒ“ƒP[ƒg-</A>][<A href="http://www.zianplus.net/guideline.txt">—˜—p‹K–ñ</A>]</FONT><FONT size="-1">[<A href="http://d.hatena.ne.jp/natori/">#A1FE9F</A>][<A href="http://ee.uuhp.com/~shi946/">“_æ‚è</A>][<A href="http://www.zianplus.net/cgi-bin/e/bbsnote.cgi">‚¨ŠG‚©‚«</A>]</FONT>
-<FORM method="GET" ACTION="./$cginame1"><FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> Œ•\\¦ <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">“úˆÈ“à‚ÉXV‚µ‚½” </FONT><FONT size="-1"><input type="radio" name="r" value="0" checked>ì¬‡<input type="radio" name="r" value="1" >“Š•[‡<input type="radio" name="r" value="2" >•[”‡</FONT>
-<FONT size="-1"><input type="checkbox" name="chg" value="on">“à—e•¶•\\¦@</FONT><FONT size="-1"><INPUT type="submit" value="İ’è"></FONT></FORM>
+<FONT size="-1">[<A href="#make">New Box Creationï¼¿</A>][<A href="http://www.zianplus.net">Index</A>][<A href="http://www.zianplus.net/mail.htm">Admin</A>][<A href="http://www.zianplus.net/cgi-bin/php/zianchat.cgi">(Internet) chat</A>][<A href="http://www.zianplus.net/cgi-bin/vote-/list.cgi">Automatic Questionnaire-</A>][<A href="http://www.zianplus.net/guideline.txt">Terms of Use</A>]</FONT><FONT size="-1">[<A href="http://d.hatena.ne.jp/natori/">#A1FE9F</A>][<A href="http://ee.uuhp.com/~shi946/">Scoring</A>][<A href="http://www.zianplus.net/cgi-bin/e/bbsnote.cgi">Drawing</A>]</FONT>
+<FORM method="GET" ACTION="./$cginame1"><FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> Subject table <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">Boxes updated within days</FONT><FONT size="-1"><input type="radio" name="r" value="0" checked>Creation-order<input type="radio" name="r" value="1" >Order of votes<input type="radio" name="r" value="2" >By (order of) votes</FONT>
+<FONT size="-1"><input type="checkbox" name="chg" value="on">Context tableã€€</FONT><FONT size="-1"><INPUT type="submit" value="Setting"></FONT></FORM>
 <UL>
-<li>${date}Œ»İ‚Ì“Š•[” ‚ÌƒŠƒXƒg
-<li>“ú•tA‚ÍÅI‘‚«‚İ‚Å‚·B
-<li>æ“ª‚Ì‚ğƒNƒŠƒbƒN‚·‚é‚ÆV‚½‚Èƒvƒ‰ƒEƒU‚ğŠJ‚­—\\’èB
+<li>${date}Current list of ballot boxes
+<li>The date and time are the last time the file was written.
+<li>Clicking on the first â—‡ at the top will open a new browser.
 _HTML_
-	&listing;#ƒŠƒXƒgì¬
+	&listing;#ãƒªã‚¹ãƒˆä½œæˆ
 if($test >= $forbid){
 print <<"_HTML_";
 </UL>
-” ”ãŒÀ\‚É’B‚µ‚Ü‚µ‚½‚Ì‚ÅV‹K‚Ì˜b‘è‚ğ“Še‚Å‚«‚Ü‚¹‚ñB
+The maximum number of boxes has been reached and new topics cannot be posted.
 <p>
 <HR>
 <FORM method="GET" ACTION="./$cginame1">
-<FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> Œ•\\¦ <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">“úˆÈ“à‚ÉXV‚µ‚½” </FONT>
-<FONT size="-1"><input type="radio" name="r" value="0" checked>ì¬‡<input type="radio" name="r" value="1" >“Š•[‡<input type="radio" name="r" value="2" >•[”‡</FONT>
-<FONT size="-1"><input type="checkbox" name="chg" value="on">“à—e•¶•\\¦@</FONT><FONT size="-1"><INPUT type="submit" value="İ’è"></FONT></FORM><HR>
+<FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> Subject table <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">Boxes updated within days</FONT>
+<FONT size="-1"><input type="radio" name="r" value="0" checked>Creation-order<input type="radio" name="r" value="1" >Order of votes<input type="radio" name="r" value="2" >By (order of) votes</FONT>
+<FONT size="-1"><input type="checkbox" name="chg" value="on">Content tableã€€</FONT><FONT size="-1"><INPUT type="submit" value="Setting"></FONT></FORM><HR>
 <H5 align=right><FORM method="POST" ACTION="./$cginame1">
 <INPUT TYPE=hidden NAME="page" VALUE="$page" >
 <INPUT TYPE=hidden NAME="h" VALUE="$hotlist" >
@@ -84,7 +84,7 @@ print <<"_HTML_";
 <INPUT TYPE=hidden NAME="lm" VALUE="$lmax" >
 <INPUT TYPE=hidden NAME="chg" VALUE="$chg" >
 <INPUT TYPE=text NAME="root" SIZE="10" VALUE="$root">
-<INPUT type=submit value="ŠÇ—"><BR>
+<INPUT type=submit value="Control"><BR>
 $maruc
 </BODY></HTML>
 _HTML_
@@ -92,18 +92,18 @@ _HTML_
 print <<"_HTML_";
 </UL>
 <FORM method="POST" ACTION="./$cginame2">
-ƒ^ƒCƒgƒ‹F<INPUT TYPE=text NAME="title" SIZE="60">i‘SŠp${namemax}•¶š‚Ü‚Åj<BR>
-“à—e:<TEXTAREA NAME="chat" rows="10" cols="80"></TEXTAREA><BR>
-@@@i${brmax}sA${chatmax}•¶š‚Ü‚Åji•K{j<BR>
-<INPUT type=submit value="‚±‚ê‚Å‚¢‚¢‚Å‚·B"><FONT size="-1" COLOR="red"> <A href="http://www.zianplus.net/guideline.txt">—˜—p‹K–ñ</A>‚ğ“Ç‚İA‹K–ñ‚ÉŠ®‘S‚É“¯ˆÓ‚µ‚Ä‚©‚ç‘—M‚µ‚Ä‚­‚¾‚³‚¢B</FONT>
-<INPUT TYPE=reset VALUE="ƒŠƒZƒbƒg">
+ã‚¿ã‚¤ãƒˆãƒ«ï¼š<INPUT TYPE=text NAME="title" SIZE="60">ï¼ˆå…¨è§’${namemax}æ–‡å­—ã¾ã§ï¼‰<BR>
+å†…å®¹:<TEXTAREA NAME="chat" rows="10" cols="80"></TEXTAREA><BR>
+ã€€ã€€ã€€ï¼ˆ${brmax}è¡Œã€${chatmax}æ–‡å­—ã¾ã§ï¼‰ï¼ˆå¿…é ˆï¼‰<BR>
+<INPUT type=submit value="This is fine."><FONT size="-1" COLOR="red"> <A href="http://www.zianplus.net/guideline.txt">åˆ©ç”¨è¦ç´„</A>ã‚’èª­ã¿ã€è¦ç´„ã«å®Œå…¨ã«åŒæ„ã—ã¦ã‹ã‚‰é€ä¿¡ã—ã¦ãã ã•ã„ã€‚</FONT>
+<INPUT TYPE=reset VALUE="Reset">
 </FORM>
 <p>
 <HR>
 <FORM method="GET" ACTION="./$cginame1">
-<FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> Œ•\\¦ <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">“úˆÈ“à‚ÉXV‚µ‚½” </FONT>
-<FONT size="-1"><input type="radio" name="r" value="0" checked>ì¬‡<input type="radio" name="r" value="1" >“Š•[‡<input type="radio" name="r" value="2" >•[”‡</FONT>
-<FONT size="-1"><input type="checkbox" name="chg" value="on">“à—e•¶•\\¦@</FONT><FONT size="-1"><INPUT type="submit" value="İ’è"></FONT></FORM><HR>
+<FONT size="-1"><INPUT TYPE=text NAME="lm" SIZE="3" VALUE="$lmax"> ä»¶è¡¨\ç¤º <INPUT TYPE=text NAME="h" SIZE="3" VALUE="0">æ—¥ä»¥å†…ã«æ›´æ–°ã—ãŸç®±</FONT>
+<FONT size="-1"><input type="radio" name="r" value="0" checked>ä½œæˆé †<input type="radio" name="r" value="1" >æŠ•ç¥¨é †<input type="radio" name="r" value="2" >ç¥¨æ•°é †</FONT>
+<FONT size="-1"><input type="checkbox" name="chg" value="on">å†…å®¹æ–‡è¡¨\ç¤ºã€€</FONT><FONT size="-1"><INPUT type="submit" value="è¨­å®š"></FONT></FORM><HR>
 <H5 align=right><FORM method="POST" ACTION="./$cginame1">
 <INPUT TYPE=hidden NAME="page" VALUE="$page" >
 <INPUT TYPE=hidden NAME="h" VALUE="$hotlist" >
@@ -111,14 +111,14 @@ print <<"_HTML_";
 <INPUT TYPE=hidden NAME="lm" VALUE="$lmax" >
 <INPUT TYPE=hidden NAME="chg" VALUE="$chg" >
 <INPUT TYPE=text NAME="root" SIZE="10" VALUE="$root">
-<INPUT type=submit value="ŠÇ—"><BR>
+<INPUT type=submit value="ç®¡ç†"><BR>
 $maruc
 </BODY></HTML>
 _HTML_
 }
 }#html END
 ##################################################
-#” ‚ÌƒŠƒXƒgƒf[ƒ^‚ğì‚é
+#ç®±ã®ãƒªã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’ä½œã‚‹
 sub listing{
 my($m_room,$m_filedata,$m_roomtotal,$m_count,$m_i,$m_set,$m_title,$m_chkkey,$m_ddata,$m_datedata,$m_sec,$m_min,$m_hour,$m_mday,$m_month,$m_year,$m_wday,$m_yday,$m_isdst,$m_dmy1,$m_dmy2,$m_schat,$m_hatu,$m_rnum,$m_dates);
 
@@ -138,7 +138,7 @@ closedir(DIR);
 foreach $m_room (@readlist) {
 	$m_filedata = -M "./$logdir/$m_room";
 	$m_room=~s/(.*)\.dat/$1/;
-	if($hotlist){#XV“ú•t‚ªhotlistˆÈ“à‚Ì‚à‚Ì‚ğƒsƒbƒNƒAƒbƒv
+	if($hotlist){#æ›´æ–°æ—¥ä»˜ãŒhotlistä»¥å†…ã®ã‚‚ã®ã‚’ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—
 		push(@roomlist,$m_room) if ($m_filedata < $hotlist);
 	}else{
 		push(@roomlist,$m_room);
@@ -157,7 +157,7 @@ if( $rev eq '1'){
 
 $m_roomtotal = @roomlist;
 $test = @roomlist;
-print "<LI>Œ»İ‚Ì“Š•[” ”<FONT SIZE=+2><B>$m_roomtotal</B></FONT>” \n";
+print "<LI>ç¾åœ¨ã®æŠ•ç¥¨ç®±æ•°<FONT SIZE=+2><B>$m_roomtotal</B></FONT>ç®±\n";
 print "<P><LI>Page:\n";
 $m_count = int(($m_roomtotal-1)/$lmax);
 for($m_i=0;$m_i<=$m_count;$m_i++){
@@ -169,8 +169,8 @@ for($m_i=0;$m_i<=$m_count;$m_i++){
 }#for
 print "<FORM method=\"POST\" ACTION=\"./$cginame1\">\n" if($root eq $masterkey);
 print "<DL>\n";
-print "Às‚µ‚½‚¢ƒRƒ}ƒ“ƒh‚Éƒ`ƒFƒbƒN‚ğ“ü‚ê‚ÄÀsƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B<br>\n" if($root eq $masterkey);
-print "ˆÚ“®‚Æíœ—¼•û‚Éƒ`ƒFƒbƒN‚ğ“ü‚ê‚½ê‡AˆÚ“®‚ª—Dæ‚³‚ê‚Ü‚·B<br>\n<br>\n" if($root eq $masterkey);
+print "å®Ÿè¡Œã—ãŸã„ã‚³ãƒãƒ³ãƒ‰ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã¦å®Ÿè¡Œãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚<br>\n" if($root eq $masterkey);
+print "ç§»å‹•ã¨å‰Šé™¤ä¸¡æ–¹ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚ŒãŸå ´åˆã€ç§»å‹•ãŒå„ªå…ˆã•ã‚Œã¾ã™ã€‚<br>\n<br>\n" if($root eq $masterkey);
 (@roomlist < $lmax) || (@roomlist = @roomlist[$page2 .. $page2+$lmax-1]);
 
 foreach $m_room (@roomlist) {
@@ -180,7 +180,7 @@ foreach $m_room (@roomlist) {
 	($m_title,$m_chkkey,$m_ddata,$m_dmy1,$m_dmy2,$m_schat,$m_dates) = split(/:#/,$m_set);
 	$m_title = unpack("A60",$m_title);
 	if( $vkey ne $m_chkkey){
-		&logdel($m_room);next;	#ƒƒO‚ª‰ó‚ê‚Ä‚¢‚é
+		&logdel($m_room);next;	#ãƒ­ã‚°ãŒå£Šã‚Œã¦ã„ã‚‹
 	}
 	$m_filedata = $ans{$m_room};
 	$m_datedata = $m_ddata - $m_filedata;
@@ -188,26 +188,26 @@ foreach $m_room (@roomlist) {
 	($m_sec,$m_min,$m_hour,$m_mday,$m_month,$m_year,$m_wday,$m_yday,$m_isdst) = localtime($times-$m_filedata*24*60*60);
 	$m_month++;
 	if($m_datedata < 1){
-			$m_dates = sprintf("<FONT COLOR=\"red\"> %d/%02d %02d%02d•ª<\/FONT>",$m_month,$m_mday,$m_hour,$m_min);
+			$m_dates = sprintf("<FONT COLOR=\"red\"> %d/%02d %02dæ™‚%02dåˆ†<\/FONT>",$m_month,$m_mday,$m_hour,$m_min);
 	}else{
 		if($m_filedata < 0.5 ){
-			$m_dates = sprintf("<FONT COLOR=\"blue\"> %d/%02d %02d%02d•ª<\/FONT>",$m_month,$m_mday,$m_hour,$m_min);
+			$m_dates = sprintf("<FONT COLOR=\"blue\"> %d/%02d %02dæ™‚%02dåˆ†<\/FONT>",$m_month,$m_mday,$m_hour,$m_min);
 		}else{
-			$m_dates = sprintf(" %d/%02d %02d%02d•ª",$m_month,$m_mday,$m_hour,$m_min);
+			$m_dates = sprintf(" %d/%02d %02dæ™‚%02dåˆ†",$m_month,$m_mday,$m_hour,$m_min);
 		}
 	}
 	$m_ddata = sprintf("%4.2f",$m_ddata);
 	print "<DT>\n";
-	print "ˆÚ<INPUT TYPE=checkbox NAME=\"erase\" VALUE=\"$m_room\move\">\n" if($root eq $masterkey);
-	print "í<INPUT TYPE=checkbox NAME=\"erase\" VALUE=\"$m_room\">\n" if($root eq $masterkey);
-	print "<FONT size=5><A HREF=\"./$htmdir/$m_room.html\" target=\"_blank\"></A></FONT>@\n";
-	print "<FONT size=5><A HREF=\"./$htmdir/$m_room.html\">$m_title </A></FONT><FONT size=2>:$m_dates: $ans2{$m_room}“Š•[<BR></FONT>\n";
+	print "ç§»<INPUT TYPE=checkbox NAME=\"erase\" VALUE=\"$m_room\move\">\n" if($root eq $masterkey);
+	print "å‰Š<INPUT TYPE=checkbox NAME=\"erase\" VALUE=\"$m_room\">\n" if($root eq $masterkey);
+	print "<FONT size=5><A HREF=\"./$htmdir/$m_room.html\" target=\"_blank\">â—‡</A></FONT>ã€€\n";
+	print "<FONT size=5><A HREF=\"./$htmdir/$m_room.html\">$m_title </A></FONT><FONT size=2>:$m_dates: $ans2{$m_room}æŠ•ç¥¨<BR></FONT>\n";
 	if($chg eq 'on'){
 		print "$m_schat\n";
 	}
 }#foreach
 print "</DL>\n";
-print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="page" VALUE="$page" ><INPUT TYPE=hidden NAME="h" VALUE="$hotlist" ><INPUT TYPE=hidden NAME="r" VALUE="$rev" ><INPUT TYPE=hidden NAME="lm" VALUE="$lmax" ><INPUT TYPE=hidden NAME="chg" VALUE="$chg" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="Às"></FORM>\n! if($root eq $masterkey);
+print qq!<INPUT TYPE=hidden NAME="erase" VALUE="dummy" ><INPUT TYPE=hidden NAME="delete" VALUE="on"><INPUT TYPE=hidden NAME="page" VALUE="$page" ><INPUT TYPE=hidden NAME="h" VALUE="$hotlist" ><INPUT TYPE=hidden NAME="r" VALUE="$rev" ><INPUT TYPE=hidden NAME="lm" VALUE="$lmax" ><INPUT TYPE=hidden NAME="chg" VALUE="$chg" ><INPUT TYPE=hidden NAME="root" VALUE="$root" ><INPUT type=submit value="å®Ÿè¡Œ"></FORM>\n! if($root eq $masterkey);
 
 print "</OL><P><LI>Page:\n";
 for($m_i=0;$m_i<=$m_count;$m_i++){
@@ -221,7 +221,7 @@ for($m_i=0;$m_i<=$m_count;$m_i++){
 }#listing END
 
 ##################################################
-#“ü—Í•ÏŠ·
+#å…¥åŠ›å¤‰æ›
 sub decode {
 $hotlist = $FORM{'h'};$hotlist = '0' if($hotlist eq '');
 $chg = $FORM{'chg'};
@@ -233,12 +233,12 @@ $root = $FORM{'root'};
 $delete = $FORM{'delete'};
 }#decode END
 ##################################################
-#ƒƒOíœ
+#ãƒ­ã‚°å‰Šé™¤
 sub deletelog {
 my($m_dmy,$m_erase);
-&err("ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·B") if($root ne $masterkey);
-$buffer =~ s/&//g;	#—]•ª‚È•”•ª‚ğíœ
-(@erase) = split(/erase=/, $buffer);	#íœƒŠƒXƒg‚ğì¬
+&err("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™ã€‚") if($root ne $masterkey);
+$buffer =~ s/&//g;	#ä½™åˆ†ãªéƒ¨åˆ†ã‚’å‰Šé™¤
+(@erase) = split(/erase=/, $buffer);	#å‰Šé™¤ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 $m_dmy = shift( @erase);
 foreach $m_erase(@erase){
 	if($m_erase =~ s/move//){
