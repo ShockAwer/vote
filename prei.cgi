@@ -1,17 +1,17 @@
 #!/usr/bin/perl
 #
-#¦‚±‚Ìcgi‚Ísnog‚Ì»ì‚µ‚½vote4‚ð‰ü—Ç‚µ‚½•¨‚Å‚·
-#¦‹–‰Â‚ªŽæ‚ê‚éìŽÒ‚ª­‚È‚¢ˆ×A‚Æ‚è‚ ‚¦‚¸“ñŽŸ”z•z‚ÆŽg—p‚Í•s‰Â‚É‚È‚Á‚Ä‚Ü‚·
-#prei.cgi‚ÍA‹¤’Ê‚µ‚ÄŽg‚í‚ê‚éƒTƒuƒ‹[ƒ`ƒ“W‚Å‚·B
-#ƒƒOƒf[ƒ^ƒtƒH[ƒ}ƒbƒg
+#â€»ã“ã®cgiã¯snogã®è£½ä½œã—ãŸvote4ã‚’æ”¹è‰¯ã—ãŸç‰©ã§ã™
+#â€»è¨±å¯ãŒå–ã‚Œã‚‹ä½œè€…ãŒå°‘ãªã„ç‚ºã€ã¨ã‚Šã‚ãˆãšäºŒæ¬¡é…å¸ƒã¨ä½¿ç”¨ã¯ä¸å¯ã«ãªã£ã¦ã¾ã™
+#prei.cgiã¯ã€å…±é€šã—ã¦ä½¿ã‚ã‚Œã‚‹ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³é›†ã§ã™ã€‚
+#ãƒ­ã‚°ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆ
 #
 #$title:#$vkey:#$ddata:#$pwlhost:#$times:#$chat:#$date:#$pwxhost:#:#
 #$pwhost:#$times:#$mrev:#$vote:#$chat:#$date:#:#
 ##############################################################################
-#‰ŠúÝ’è‚È‚Ç
+#åˆæœŸè¨­å®šãªã©
 use Socket;
 
-require './config.cgi'; # Ý’è“Ç‚Ýž‚Ý
+require './config.cgi'; # è¨­å®šèª­ã¿è¾¼ã¿
 
 sub winit{
 my($m_h1,$m_h2,$m_h3,$m_h4,$m_ph1,$m_ph2,$m_ph3,$m_ph4,$m_ph5,$m_ph6,$m_ph7,$m_ph8,$m_wh1,$m_wh2);
@@ -19,22 +19,23 @@ my($m_h1,$m_h2,$m_h3,$m_h4,$m_ph1,$m_ph2,$m_ph3,$m_ph4,$m_ph5,$m_ph6,$m_ph7,$m_p
 &global_config();
 
 $host = $ENV{'REMOTE_HOST'};
-$hosta = '';	#‰Šú‰»
-$xhost = ''; ## ‹øƒAƒhƒŒƒX
-$proxycheck = 0;	#ƒvƒƒLƒVƒtƒ‰ƒO‰Šú‰»
+
+$hosta = '';	#åˆæœŸåŒ–
+$xhost = ''; ## ä¸²ã‚¢ãƒ‰ãƒ¬ã‚¹
+$proxycheck = 0;	#ãƒ—ãƒ­ã‚­ã‚·ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
 $hosta=$ENV{'HTTP_VIA'} if( $ENV{'HTTP_VIA'}=~s/.*\s(\d+)\.(\d+)\.(\d+)\.(\d+)/$1.$2.$3.$4/ );
 $hosta=$ENV{'HTTP_X_FORWARDED_FOR'} if( $ENV{'HTTP_X_FORWARDED_FOR'}=~s/^(\d+)\.(\d+)\.(\d+)\.(\d+)(\D*).*/$1.$2.$3.$4/ );
 $hosta=$ENV{'HTTP_FORWARDED'} if( $ENV{'HTTP_FORWARDED'}=~s/.*\s(\d+)\.(\d+)\.(\d+)\.(\d+)/$1.$2.$3.$4/ );
 $hosta=$ENV{'HTTP_CLIENT_IP'} if( $ENV{'HTTP_CLIENT_IP'} =~s/(\d+)\.(\d+)\.(\d+)\.(\d+)/$1.$2.$3.$4/ );
 $hosta=$ENV{'HTTP_SP_HOST'} if( $ENV{'HTTP_SP_HOST'} =~s/(\d+)\.(\d+)\.(\d+)\.(\d+)/$1.$2.$3.$4/ );
-if( $hosta eq '' ){		#˜R‚ê‹ø‚¶‚á‚È‚¢
-	$hosta=$ENV{'REMOTE_ADDR'};			#ŽÀ‚h‚oƒAƒhƒŒƒX
+if( $hosta eq '' ){		#æ¼ã‚Œä¸²ã˜ã‚ƒãªã„
+	$hosta=$ENV{'REMOTE_ADDR'};			#å®Ÿï¼©ï¼°ã‚¢ãƒ‰ãƒ¬ã‚¹
 	$proxycheck = &proxy_status();
 }else{
     	$xhost = $ENV{'REMOTE_ADDR'};
-	$proxycheck = 1; #˜R‚ê‹ø
+	$proxycheck = 1; #æ¼ã‚Œä¸²
 }
-($m_h1,$m_h2,$m_h3,$m_h4) = split(/\./,$hosta);		#‚h‚o‚ÌˆÃ†‰»i–Ê“|‚­‚³‚¢‚Ì‚Åˆê—¥“¯‚¶”’l‚Éj
+($m_h1,$m_h2,$m_h3,$m_h4) = split(/\./,$hosta);		#ï¼©ï¼°ã®æš—å·åŒ–ï¼ˆé¢å€’ãã•ã„ã®ã§ä¸€å¾‹åŒã˜æ•°å€¤ã«ï¼‰
 $m_wh1 = int($m_h1/16);$m_wh2 = $m_h1%16;
 $m_ph1 = ('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') [$m_wh1%16];
 $m_ph2 = ('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') [$m_wh2];
@@ -49,54 +50,54 @@ $m_ph7 = ('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') [$m_w
 $m_ph8 = ('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') [$m_wh2];
 $pwlhost="$m_ph1$m_ph2$m_ph3$m_ph4$m_ph5$m_ph6$m_ph7$m_ph8";
 $pwhost="$m_ph1$m_ph2$m_ph3$m_ph4$m_ph5$m_ph6$m_ph7$m_ph8";
-$orititle='Ž©“®ƒAƒ“ƒP[ƒg+';	#ƒ^ƒCƒgƒ‹
+$orititle='è‡ªå‹•ã‚¢ãƒ³ã‚±ãƒ¼ãƒˆ+';	#ã‚¿ã‚¤ãƒˆãƒ«
 $body = '<BODY BGCOLOR="#A1FE9F" TEXT="#000000" LINK="#0000ff" VLINK="#ff0000">
-';	#•W€•\Ž¦Ý’è
-$metacode = '<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=Shift_JIS">';	#•¶ŽšƒR[ƒhŽw’è
-$maruc = '<H5 ALIGN=right>ƒIƒŠƒWƒiƒ‹‚Í<A HREF="http://www.cup.com/yui/index.html">‚ä‚¢‚Ú[‚Ç•‚ä‚¢‚Ú[‚Æ</A></H5>';	#’˜ìŒ •\Ž¦
+';	#æ¨™æº–è¡¨ç¤ºè¨­å®š
+$metacode = '<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=Shift_JIS">';	#æ–‡å­—ã‚³ãƒ¼ãƒ‰æŒ‡å®š
+$maruc = '<H5 ALIGN=right>ã‚ªãƒªã‚¸ãƒŠãƒ«ã¯<A HREF="http://www.cup.com/yui/index.html">ã‚†ã„ã¼ãƒ¼ã©ï¼†ã‚†ã„ã¼ãƒ¼ã¨</A></H5>';	#è‘—ä½œæ¨©è¡¨ç¤º
 
-#”¼Šp‚ð‘SŠp‚É•ÏŠ·‚·‚éƒe[ƒuƒ‹
+#åŠè§’ã‚’å…¨è§’ã«å¤‰æ›ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«
 %h2z = qw(
-± ƒA ² ƒC ³ ƒE ´ ƒG µ ƒI
-¶ ƒJ · ƒL ¸ ƒN ¹ ƒP º ƒR
-» ƒT ¼ ƒV ½ ƒX ¾ ƒZ ¿ ƒ\
-À ƒ^ Á ƒ` Â ƒc Ã ƒe Ä ƒg
-Å ƒi Æ ƒj Ç ƒk È ƒl É ƒm
-Ê ƒn Ë ƒq Ì ƒt Í ƒw Î ƒz
-Ï ƒ} Ð ƒ~ Ñ ƒ€ Ò ƒ Ó ƒ‚
-Ô ƒ„ Õ ƒ† Ö ƒˆ
-× ƒ‰ Ø ƒŠ Ù ƒ‹ Ú ƒŒ Û ƒ
-Ü ƒ ¦ ƒ’ Ý ƒ“
-¯ ƒb ° [
-¬ ƒƒ ­ ƒ… ® ƒ‡
-§ ƒ@ ¨ ƒB © ƒD ª ƒF « ƒH
-¶Þ ƒK ·Þ ƒM ¸Þ ƒO ¹Þ ƒQ ºÞ ƒS
-»Þ ƒU ¼Þ ƒW ½Þ ƒY ¾Þ ƒ[ ¿Þ ƒ]
-ÀÞ ƒ_ ÁÞ ƒa ÂÞ ƒd ÃÞ ƒf ÄÞ ƒh
-ÊÞ ƒo ËÞ ƒr ÌÞ ƒu ÍÞ ƒx ÎÞ ƒ{
-Êß ƒp Ëß ƒs Ìß ƒv Íß ƒy Îß ƒ|
-¢ u £ v ¤ A ¡ B . D
+ï½± ã‚¢ ï½² ã‚¤ ï½³ ã‚¦ ï½´ ã‚¨ ï½µ ã‚ª
+ï½¶ ã‚« ï½· ã‚­ ï½¸ ã‚¯ ï½¹ ã‚± ï½º ã‚³
+ï½» ã‚µ ï½¼ ã‚· ï½½ ã‚¹ ï½¾ ã‚» ï½¿ ã‚½
+ï¾€ ã‚¿ ï¾ ãƒ ï¾‚ ãƒ„ ï¾ƒ ãƒ† ï¾„ ãƒˆ
+ï¾… ãƒŠ ï¾† ãƒ‹ ï¾‡ ãƒŒ ï¾ˆ ãƒ ï¾‰ ãƒŽ
+ï¾Š ãƒ ï¾‹ ãƒ’ ï¾Œ ãƒ• ï¾ ãƒ˜ ï¾Ž ãƒ›
+ï¾ ãƒž ï¾ ãƒŸ ï¾‘ ãƒ  ï¾’ ãƒ¡ ï¾“ ãƒ¢
+ï¾” ãƒ¤ ï¾• ãƒ¦ ï¾– ãƒ¨
+ï¾— ãƒ© ï¾˜ ãƒª ï¾™ ãƒ« ï¾š ãƒ¬ ï¾› ãƒ­
+ï¾œ ãƒ¯ ï½¦ ãƒ² ï¾ ãƒ³
+ï½¯ ãƒƒ ï½° ãƒ¼
+ï½¬ ãƒ£ ï½­ ãƒ¥ ï½® ãƒ§
+ï½§ ã‚¡ ï½¨ ã‚£ ï½© ã‚¥ ï½ª ã‚§ ï½« ã‚©
+ï½¶ï¾ž ã‚¬ ï½·ï¾ž ã‚® ï½¸ï¾ž ã‚° ï½¹ï¾ž ã‚² ï½ºï¾ž ã‚´
+ï½»ï¾ž ã‚¶ ï½¼ï¾ž ã‚¸ ï½½ï¾ž ã‚º ï½¾ï¾ž ã‚¼ ï½¿ï¾ž ã‚¾
+ï¾€ï¾ž ãƒ€ ï¾ï¾ž ãƒ‚ ï¾‚ï¾ž ãƒ… ï¾ƒï¾ž ãƒ‡ ï¾„ï¾ž ãƒ‰
+ï¾Šï¾ž ãƒ ï¾‹ï¾ž ãƒ“ ï¾Œï¾ž ãƒ– ï¾ï¾ž ãƒ™ ï¾Žï¾ž ãƒœ
+ï¾Šï¾Ÿ ãƒ‘ ï¾‹ï¾Ÿ ãƒ” ï¾Œï¾Ÿ ãƒ— ï¾ï¾Ÿ ãƒš ï¾Žï¾Ÿ ãƒ
+ï½¢ ã€Œ ï½£ ã€ ï½¤ ã€ ï½¡ ã€‚ . ï¼Ž
 );
 
 }#winit END
 
 #################################################
-#‹øƒ`ƒFƒbƒN
+#ä¸²ãƒã‚§ãƒƒã‚¯
 sub proxy_status {
     foreach(('HTTP_VIA', 'HTTP_X_FORWARDED_FOR', 'HTTP_FORWARDED',
 	     'HTTP_X_LOCKING', 'HTTP_CACHE_INFO', 'HTTP_PROXY_CONNECTION')) {
-	#&err("$_=$ENV{$_}") if($ENV{$_} ne ""); # ‹ø
-	return 2 if($ENV{$_} ne ""); # ‹ø
+	#&err("$_=$ENV{$_}") if($ENV{$_} ne ""); # ä¸²
+	return 2 if($ENV{$_} ne ""); # ä¸²
     }
-    return 3 if(($host !~ /jp$/i) # ŠCŠOƒAƒNƒZƒXB“½–¼‹ø‚©‚àB
+    return 3 if(($host !~ /jp$/i) # æµ·å¤–ã‚¢ã‚¯ã‚»ã‚¹ã€‚åŒ¿åä¸²ã‹ã‚‚ã€‚
 		&& ($host !~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/));
-    return 4 if($host =~ /ac\.jp$/i); # ‘åŠw‚Æ‚©‚©‚çƒAƒNƒZƒXB“½–¼‹ø‚©‚à??
+    return 4 if($host =~ /ac\.jp$/i); # å¤§å­¦ã¨ã‹ã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ã€‚åŒ¿åä¸²ã‹ã‚‚??
 
-    return 0; #¶IP(‚½‚Ô‚ñ)
+    return 0; #ç”ŸIP(ãŸã¶ã‚“)
 }
 
 #################################################
-#open‹øƒ`ƒFƒbƒN(d‚¢‚Ì‚Å” ì¬Žž‚É‚Ì‚ÝŽg—p)
+#openä¸²ãƒã‚§ãƒƒã‚¯(é‡ã„ã®ã§ç®±ä½œæˆæ™‚ã«ã®ã¿ä½¿ç”¨)
 sub is_open_proxy() {
 	foreach((80, 8080, 3128, 8000)){
 		return 1 if &is_port_open($ENV{'REMOTE_ADDR'}, $_);
@@ -127,22 +128,22 @@ sub is_port_open() {
 
 
 #################################################
-#$date‚ÉŽž‚ð‘ã“ü‚µ‚Ü‚·B
+#$dateã«æ™‚åˆ»ã‚’ä»£å…¥ã—ã¾ã™ã€‚
 sub jikan{
 my($m_sec,$m_min,$m_hour,$m_mday,$m_month,$m_year,$m_wday,$m_yday,$m_isdst,$m_youbi);
 
 $ENV{'TZ'}   = 'JST-9';$times = time;
-#18ŽžŠÔŽž·‚ª‚ ‚é‚È‚çA$times = time+18*60*60‚Æ‚·‚éB
+#18æ™‚é–“æ™‚å·®ãŒã‚ã‚‹ãªã‚‰ã€$times = time+18*60*60ã¨ã™ã‚‹ã€‚
 ($m_sec,$m_min,$m_hour,$m_mday,$m_month,$m_year,$m_wday,$m_yday,$m_isdst) = localtime($times);
 $m_month++;
-$m_youbi = ('“ú','ŒŽ','‰Î','…','–Ø','‹à','“y') [$m_wday];
-$date = sprintf("%dŒŽ%02d“úi%sj%02dŽž%02d•ª%02d•b",$m_month,$m_mday,$m_youbi,$m_hour,$m_min,$m_sec);
+$m_youbi = ('æ—¥','æœˆ','ç«','æ°´','æœ¨','é‡‘','åœŸ') [$m_wday];
+$date = sprintf("%dæœˆ%02dæ—¥ï¼ˆ%sï¼‰%02dæ™‚%02dåˆ†%02dç§’",$m_month,$m_mday,$m_youbi,$m_hour,$m_min,$m_sec);
 }#jikan END
 
 ##################################################
-#“ü—Í•ÏŠ·
-#”¼ŠpƒJƒi@a1-df(161-223)
-#ƒVƒtƒgjis@81-9f e0-fc(129-159 224-252) + 40-7e 80-fc(64-126 128-252)
+#å…¥åŠ›å¤‰æ›
+#åŠè§’ã‚«ãƒŠã€€a1-df(161-223)
+#ã‚·ãƒ•ãƒˆjisã€€81-9f e0-fc(129-159 224-252) + 40-7e 80-fc(64-126 128-252)
 sub wdecode {
 my($m_pair,$m_name,$m_value);
 
@@ -176,7 +177,7 @@ foreach $m_pair (@pairs){
 
 }#wdecode END
 ##################################################
-#ƒGƒ‰[•\Ž¦
+#ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
 sub err{
 my($m_error);
 
@@ -191,7 +192,7 @@ $body
 <BR><BR><BR><BR><BR>
 <CENTER><H1>$m_error</H1></CENTER><BR>
 <BR><BR><BR><BR><BR>
-<CENTER><FONT SIZE=6><A HREF="$cgidir/$cginame1">ƒŠƒXƒg‚Ö–ß‚é</A></FONT></CENTER>
+<CENTER><FONT SIZE=6><A HREF="$cgidir/$cginame1">ãƒªã‚¹ãƒˆã¸æˆ»ã‚‹</A></FONT></CENTER>
 $maruc
 </BODY></HTML>
 _HTML_
